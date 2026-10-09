@@ -30,6 +30,13 @@
       <button class="btn btn--new">🔄 New game</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
+      <div class="winner-modal hidden" role="dialog" aria-modal="true" aria-labelledby="winner-modal-title">
+        <div class="winner-modal__content">
+          <h2 id="winner-modal-title">Winner!</h2>
+          <p><span class="winner-modal__name"></span> wins the game.</p>
+          <button class="winner-modal__new">Play again</button>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>

@@ -185,6 +185,10 @@ jessicaCopy.lastName = 'Davis';
 
 jessicaCopy.family.push('Steve');
 jessicaCopy.family.push('John');
+
+
+
+
 // above i have addded two more elements in the family array we will check in the console what is happening
 
 // {firstName: 'Jessica', lastName: 'Williams', age: 27, family: Array(4)}

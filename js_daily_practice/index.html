@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A simple personal workspace." />
+    <title>My Workspace</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #202a35;
+        background: #f3f6fa;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        padding: 24px;
+        place-items: center;
+        background:
+          radial-gradient(ellipse at 18% 15%, #dce8f8 0, transparent 34rem),
+          radial-gradient(ellipse at 85% 85%, #e4eee8 0, transparent 30rem),
+          #f3f6fa;
+      }
+
+      main {
+        width: min(100%, 680px);
+        padding: clamp(32px, 8vw, 72px);
+        border: 1px solid rgb(255 255 255 / 85%);
+        border-radius: 28px;
+        background: rgb(255 255 255 / 76%);
+        box-shadow: 0 24px 80px rgb(34 53 77 / 10%);
+        text-align: center;
+        backdrop-filter: blur(12px);
+      }
+
+      .mark {
+        display: grid;
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 28px;
+        place-items: center;
+        border-radius: 18px;
+        background: #e8eff9;
+        color: #41658c;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 8vw, 3.8rem);
+        letter-spacing: -0.065em;
+        line-height: 1.05;
+      }
+
+      p {
+        max-width: 410px;
+        margin: 18px auto 0;
+        color: #687587;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .accent {
+        width: 44px;
+        height: 4px;
+        margin: 32px auto 0;
+        border-radius: 99px;
+        background: #8eb3a0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mark" aria-hidden="true">✦</div>
+      <h1>Welcome</h1>
+      <p>A calm little space to explore, create, and keep moving forward.</p>
+      <div class="accent" aria-hidden="true"></div>
+    </main>
+
+    <script src="Practice_Day_1.js"></script>
+    <script src="Practice_Day_2.js"></script>
+    <script src="Practice_Day_3.js"></script>
+    <script src="Practice_Day_4.js"></script>
+  </body>
+</html>

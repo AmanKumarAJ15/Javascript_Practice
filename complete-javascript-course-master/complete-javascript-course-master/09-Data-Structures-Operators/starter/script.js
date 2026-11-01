@@ -25,6 +25,21 @@ const mexicanFoods = new Set([
 ]);
 
 // Data needed for first part of the section
+const openingHours= {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  };
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -53,33 +68,414 @@ const restaurant = {
             console.log(otherIngredient);
   },
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  openingHours,
 };
+
+
+
+
+// ==========================================================================================================================
+
+// Sets
+
+
+// const orderSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Pasta',
+//   'Rissoto',
+//   'Pasta',
+// ])
+// console.log(orderSet);
+// console.log(orderSet.size);// gives you the size of sets
+// console.log(orderSet.has("Pasta"));
+// console.log(orderSet.has("Garlic Bread"));// return boolean values
+// const x1= orderSet.add("Lasangne");
+// // const x1= orderSet.add("Lasangne", "brownie", "lasangne");// as yo can see only one value is added and rest are left this is the right way to add multiple values const x1 = orderSet.add('Lasagne').add('brownie').add('lasagne');
+// console.log(x1);
+// console.log(orderSet);// added a new value to the sets
+// const x2 = orderSet.delete("Lasangne")
+// console.log(x2);
+// // console.log(orderSet.delete("Lasangne"));// return boolean value
+// console.log(orderSet);
+// console.log(orderSet.clear);
+
+// // as it removes the duplicate value
+
+
+// const oobj = {a:1,b:2,c:3};
+
+// const oset = new Set();
+// console.log(oset);
+// console.log(oset.add({a:1}));
+// console.log(oset.add({a:1}));
+
  
+
+
+
+// const sstring = new Set("Jonasss")
+// console.log(sstring);// each letter is now a element of the set and duplicate is now removed
+
+// const empts = new Set()
+// console.log(empts);
+
+const staff = ['Waiter','Manager', 'Waiter', 'Chef', 'Waiter', 'Gaurd'];
+console.log(staff);// array staff now we will see array to set conversion
+
+const staffUnique = new Set(staff);
+console.log(staffUnique);// all the duplicate values are removed and array become set now
+console.log(typeof staff, typeof staffUnique);// both belong to object type 
+
+// now we will see set to array conversion
+
+const staffArr = [...staffUnique];
+console.log(staffArr);
+
 // ==========================================================================================================================
 
 
-// object literals
+
+
+
+
+// // looping object
+
+// const properties = Object.keys(openingHours);
+// // console.log(properties); // arrays of the property name of an object
+
+// const value = Object.values(openingHours);
+// // console.log(value);
+
+// const entry = Object.entries(openingHours);
+// // console.log(entry);
+
+// // we use destructuring and nested destructuring and also looping through object using entries
+
+// for (const [key, {open, close}] of Object.entries(openingHours)) {
+//   console.log(`On ${key} we can open at ${open} and close at ${close}`);
+// }
+
+// for(const [day, {opens}] of Object.entries({fri:{opens:11}})) {
+//   console.log(day,opens);
+// }
+// //as it stores null and undefined value as an array  
+ 
+
+// ==========================================================================================================================
+
+// // optional chaining
+
+// // console.log(restaurant.openingHours.mon.open);// you will get runtime typeerror so to avoid you use chaining optional operator
+
+// console.log(restaurant.openingHours?.mon?.open); // as now output gets undefined it avoid the typeerror
+
+// console.log(restaurant.openingHours?.fri?.open);// wihtout stopping the execution flow it give the output 11 as if you get error then JS automatically stops at that line and will not execute the next line but using (?. ) operator that error is avoided and now you we be getting no error and it will execute the next line
+
+// // it is similar to the below thing
+
+// if(restaurant.openingHours && restaurant.openingHours.mon) 
+//   console.log(restaurant.openingHours.mon.open);
+
+
+// // as the if blocks avoid the error similarly the optional chaining operator is very much useful 
+
+// console.log(restaurant.order?.(0,1)); // as it  is giving output but if your code is not having that method then without optional chaining you will get again typeerror if that method does not exist inside that object'
+
+// // console.log(restaurant.orderRissotto(0,1)); // now gets the error so to avoid use optional chaining as it will give undefined or null for the property or method which is not defined or is null
+
+// console.log(restaurant.orderRissotto?.(0,1));// gets undefined now and wont stop the execution flow
+
+// // same thing we can perform in array
+
+
+// // const users = [{name: "jonas", email:"jonas@io.in"}]
+// const users = []
+
+// console.log(users[0]?.name);
+
+// const weekdays = ['mon', 'tues', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// const openingHours= {
+//     [weekdays[3]]: {
+//       open: 12,
+//       close: 22,
+//     },
+//     [weekdays[4]]: {
+//       open: 11,
+//       close: 23,
+//     },
+//     [weekdays[5]]: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   };
+// // Data needed for first part of the section
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+
+//   // now we will create a function to see how a function when an arguments are passed then how multiple values can be passed in return
+//   order: function(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+
+//   // creating function for understanding destructuring object with function parameter
+
+//   orderDelivery: function({time,address,starterIndex,mainIndex}) {
+//     console.log(`Order Recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at time ${time}`);
+//   },
+
+//   orderPasta: function(ing1,ing2,ing3) {
+//     console.log(`Here is your Delicious Pasta with ingrediants ${ing1}, ${ing2} and ${ing3}`);
+//   },
+
+//   orderPizza: function(mainIngredient, ...otherIngredient) {
+//             console.log(mainIngredient);
+//             console.log(otherIngredient);
+//   },
+
+//   // openingHours: {
+//   //   thu: {
+//   //     open: 12,
+//   //     close: 22,
+//   //   },
+//   //   fri: {
+//   //     open: 11,
+//   //     close: 23,
+//   //   },
+//   //   sat: {
+//   //     open: 0, // Open 24 hours
+//   //     close: 24,
+//   //   },
+//   // },
+//   // in place of defining the complete object you can just specify the property name
+//   openingHours,
+// };
+
+// const days = ['mon', 'tues', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// for (const day of days) {
+//   const open = restaurant.openingHours[day]?.open ?? "closed";
+//   console.log(`On ${day}, we open at ${open}`);
+// }
 
 
 
 
 
+// ==========================================================================================================================
 
 
+// enhanced object literals
+
+
+// 1. property short hand
+
+// const openingHours= {
+//     thu: {
+//       open: 12,
+//       close: 22,
+//     },
+//     fri: {
+//       open: 11,
+//       close: 23,
+//     },
+//     sat: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   };
+// // Data needed for first part of the section
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+
+//   // now we will create a function to see how a function when an arguments are passed then how multiple values can be passed in return
+//   order: function(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+
+//   // creating function for understanding destructuring object with function parameter
+
+//   orderDelivery: function({time,address,starterIndex,mainIndex}) {
+//     console.log(`Order Recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at time ${time}`);
+//   },
+
+//   orderPasta: function(ing1,ing2,ing3) {
+//     console.log(`Here is your Delicious Pasta with ingrediants ${ing1}, ${ing2} and ${ing3}`);
+//   },
+
+//   orderPizza: function(mainIngredient, ...otherIngredient) {
+//             console.log(mainIngredient);
+//             console.log(otherIngredient);
+//   },
+
+//   // openingHours: {
+//   //   thu: {
+//   //     open: 12,
+//   //     close: 22,
+//   //   },
+//   //   fri: {
+//   //     open: 11,
+//   //     close: 23,
+//   //   },
+//   //   sat: {
+//   //     open: 0, // Open 24 hours
+//   //     close: 24,
+//   //   },
+//   // },
+//   // in place of defining the complete object you can just specify the property name
+//   openingHours,
+// };
+
+
+// 2. Method ShortHand
+
+
+// const openingHours= {
+//     thu: {
+//       open: 12,
+//       close: 22,
+//     },
+//     fri: {
+//       open: 11,
+//       close: 23,
+//     },
+//     sat: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   };
+// // Data needed for first part of the section
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+
+//   // now we will create a function to see how a function when an arguments are passed then how multiple values can be passed in return
+//   order(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+
+//   // creating function for understanding destructuring object with function parameter
+
+//   orderDelivery({time,address,starterIndex,mainIndex}) {
+//     console.log(`Order Recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at time ${time}`);
+//   },
+
+//   orderPasta(ing1,ing2,ing3) {
+//     console.log(`Here is your Delicious Pasta with ingrediants ${ing1}, ${ing2} and ${ing3}`);
+//   },
+
+//   orderPizza(mainIngredient, ...otherIngredient) {
+//             console.log(mainIngredient);
+//             console.log(otherIngredient);
+//   },
+
+//   // openingHours: {
+//   //   thu: {
+//   //     open: 12,
+//   //     close: 22,
+//   //   },
+//   //   fri: {
+//   //     open: 11,
+//   //     close: 23,
+//   //   },
+//   //   sat: {
+//   //     open: 0, // Open 24 hours
+//   //     close: 24,
+//   //   },
+//   // },
+//   // in place of defining the complete object you can just specify the property name
+//   openingHours,
+// };
+// as new features is added that for every method we dont need to property property name with ": function keyword " you can directly write the porperty name that is the method name and direcrtly under {} you can provide the function simialrly like function expression
+// method will work by this also 
+
+
+// 3. Computed ShortHand 
+
+
+// //here you can see inside the object property name the names are not mentioned instead the array is giving the property name using [] still it gets the value
+
+// const weekdays = ['mon', 'tues', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// const openingHours= {
+//     [weekdays[3]]: {
+//       open: 12,
+//       close: 22,
+//     },
+//     [weekdays[4]]: {
+//       open: 11,
+//       close: 23,
+//     },
+//     [weekdays[5]]: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   };
+// // Data needed for first part of the section
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+
+//   // now we will create a function to see how a function when an arguments are passed then how multiple values can be passed in return
+//   order: function(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+
+//   // creating function for understanding destructuring object with function parameter
+
+//   orderDelivery: function({time,address,starterIndex,mainIndex}) {
+//     console.log(`Order Recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at time ${time}`);
+//   },
+
+//   orderPasta: function(ing1,ing2,ing3) {
+//     console.log(`Here is your Delicious Pasta with ingrediants ${ing1}, ${ing2} and ${ing3}`);
+//   },
+
+//   orderPizza: function(mainIngredient, ...otherIngredient) {
+//             console.log(mainIngredient);
+//             console.log(otherIngredient);
+//   },
+
+//   // openingHours: {
+//   //   thu: {
+//   //     open: 12,
+//   //     close: 22,
+//   //   },
+//   //   fri: {
+//   //     open: 11,
+//   //     close: 23,
+//   //   },
+//   //   sat: {
+//   //     open: 0, // Open 24 hours
+//   //     close: 24,
+//   //   },
+//   // },
+//   // in place of defining the complete object you can just specify the property name
+//   openingHours,
+// };
+
+
+// console.log(restaurant);
 
  
 // ==========================================================================================================================

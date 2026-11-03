@@ -74,6 +74,151 @@ const restaurant = {
 
 
 
+
+
+
+// ==========================================================================================================================
+
+
+// // Map:iteration
+
+// const question = new Map([
+//   ['Question', 'What  is the best programming Language'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'Javascript'],
+//   ['correct', 3],
+//   [true, 'correct!!!'],
+//   [false, 'try again!']
+// ]);
+
+// console.log(question);
+
+// console.log(Object.entries(openingHours));
+// // as you see the object entries are matching exactly like the map will see how to do the conversion from object to map 
+
+// const hourMap = new Map(Object.entries(openingHours));
+// console.log(hourMap);
+// // using the Object.entries we have converted the Object directly to Map
+
+// // now we will see how we will be using for... of with the Map as Maps are also iterables
+// // also destructuring and filtering using the datatype we will observe here 
+// console.log(question.get('Question'));
+// for(const [key, value] of question) {
+//   if(typeof key === 'number') 
+//     console.log(`Answer ${key} : ${value}`);
+// }
+
+// const answer = Number(prompt('Your Answer'))
+// console.log(answer);
+
+
+// console.log(question.get(question.get('correct') === answer));
+
+// converting Map into Array
+
+// console.log([...question]);//using spread operator
+
+// console.log(question.entries());
+
+// const k = question.keys();
+// console.log(k);
+// console.log(question.keys());
+
+// const v = question.values();
+// console.log(v);
+// console.log(question.values());
+
+
+
+
+
+
+// ==========================================================================================================================
+
+// // Maps fundamental
+
+// const rest = new Map();
+// rest.set('name', 'Classico Italiano');
+// rest.set(1, 'Firenze Italy');
+// rest.set(2, 'Lisbon Portugal');
+// rest
+//   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'We are open :D')
+//   .set(false, 'We are close:C'); 
+// console.log(rest);
+
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
+// console.log(rest.get(1));
+
+// const time = 12;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+// console.log(rest.has('categories'));
+
+// // rest.delete(2)
+// // console.log(rest.delete(2));
+// console.log(rest.size);
+// console.log(rest.clear());
+// console.log(rest);
+
+
+
+
+// ==========================================================================================================================
+
+// // New Set Operations
+
+// // all the new methods introduced in sets after ES2025
+
+// // intersection() 
+
+// const commonFoods = italianFoods.intersection(mexicanFoods);
+// console.log(commonFoods);// as intersection method create a new sets with common elemennts stored in it
+
+// const italianMexicanFusion = italianFoods.union(mexicanFoods);
+// console.log(italianMexicanFusion); // as it connected the two sets  as union method works in maths similarly it works here
+
+// // anotheer way to use union method  which was performed earlier ES2025 using the spread operator
+
+// const italianMexicanFusion2 = new Set([...italianFoods, ...mexicanFoods]);
+// console.log(italianMexicanFusion2);// now a new sets is created with the combination of two sets and all the elements are unique as using spread opearator it combines two sets but there common values will be there but if you use new set keyword to add the two set using spread opearator it will create a new set and all the duplicate values will be removed
+
+// // difference method
+
+// const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+// console.log(uniqueItalianFoods);
+
+// const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+// console.log(uniqueMexicanFoods);
+// // as you can see all the common items are removed so it only contains those element which are present in set 1 but not in set 2 
+// // same as math set logic we use to use for the difference method
+
+// // symmetric difference method
+// const uniqueItalianMexicanFoods = italianFoods.symmetricDifference(mexicanFoods)
+// console.log(uniqueItalianMexicanFoods);
+
+
+// // isDisjointFrom()
+// console.log(uniqueItalianFoods.isDisjointFrom(uniqueMexicanFoods));//it returns true as all the value in both sets are unique
+// console.log(italianFoods.isDisjointFrom(mexicanFoods));//false because they have a common value 
+// // it checks whether sets are unique or not and if they have common value it return false and if all the values are unique then it returns true
+
+// // isSubsetOf()
+// const set1 = new Set([1,2,3,4]);
+// const set2 = new Set([1,2])
+// console.log(set2.isSubsetOf(set1));
+// console.log(set1.isSubsetOf(set2));
+// // this method is also returning a boolean value as it checks that the set 1 is belonging to set 2 or not if yes then it returns true if not then returns false
+
+// // isSupersetOf()
+// // it is the opposite of the subset as it is checking that set 1 is belonging to the set2 or not
+// console.log(set1.isSupersetOf(set2));
+
+
 // ==========================================================================================================================
 
 // Sets
@@ -121,17 +266,19 @@ const restaurant = {
 // const empts = new Set()
 // console.log(empts);
 
-const staff = ['Waiter','Manager', 'Waiter', 'Chef', 'Waiter', 'Gaurd'];
-console.log(staff);// array staff now we will see array to set conversion
+// const staff = ['Waiter','Manager', 'Waiter', 'Chef', 'Waiter', 'Gaurd'];
+// console.log(staff);// array staff now we will see array to set conversion
 
-const staffUnique = new Set(staff);
-console.log(staffUnique);// all the duplicate values are removed and array become set now
-console.log(typeof staff, typeof staffUnique);// both belong to object type 
+// const staffUnique = new Set(staff);
+// console.log(staffUnique);// all the duplicate values are removed and array become set now
+// console.log(typeof staff, typeof staffUnique);// both belong to object type 
 
-// now we will see set to array conversion
+// // now we will see set to array conversion
 
-const staffArr = [...staffUnique];
-console.log(staffArr);
+// const staffArr = [...staffUnique];
+// console.log(staffArr);// it is converted into array now that set is now converted into array with removed duplicate values
+
+
 
 // ==========================================================================================================================
 

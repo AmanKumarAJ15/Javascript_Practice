@@ -73,6 +73,60 @@ const restaurant = {
 
 
 
+// ==========================================================================================================================
+
+
+//  working with string
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(airline[0]);
+console.log(airline[1]);
+console.log(airline[2]);
+
+// we can also use string directly 
+
+console.log('BCS'[0]);// got the first character
+
+console.log(airline.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.indexOf('Portugal'));
+console.log(airline.indexOf('z'));
+console.log(airline.slice(2,3));
+
+// console.log(airline.slice(-1));
+
+
+// slice method
+
+// console.log(airline.slice(begin, end index));
+console.log(airline.slice(4,7));// got 'Air' 
+
+
+//using indexOf with slice
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+
+console.log(airline.slice(airline.lastIndexOf(' ')+1));
+
+//write a function that recieves a airplane seat and log to the console whether its a middle seat or not
+const checkMiddleSeat = function(seat) {
+   const airplaneSeat = 'A B C | D E F';
+   const str = seat.slice(-1);
+   console.log(typeof str);
+  //  console.log((airplaneSeat.indexOf(' '), airplaneSeat.indexOf(' ')))
+  //  if(str === airplaneSeat.slice(airplaneSeat.indexOf(' '), airplaneSeat.indexOf(' ')+1)  && str === airplaneSeat.slice(airplaneSeat.lastIndexOf(' '), airplaneSeat.lastIndexOf(' ')+1))
+    if(str === 'B' || str === 'E')
+        console.log(`You have got a middle seat!!`);
+    else
+      console.log(`You didnt get a middle seat !!`);
+  }
+
+checkMiddleSeat('11b');
+
+
 
 
 

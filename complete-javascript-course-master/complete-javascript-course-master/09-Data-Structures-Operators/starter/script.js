@@ -3,8 +3,6 @@
 
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 const italianFoods = new Set([
   'pasta',
@@ -70,6 +68,133 @@ const restaurant = {
 
   openingHours,
 };
+
+
+
+// ==========================================================================================================================
+
+
+// string more practice
+
+// Challenge
+// above you have a string named 'flight' that string you have to make it in the below way
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+console.log(flights);//unstructured string
+
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25
+//   +_Arrival;bru0943384722;fao93766109;11:45
+//   +_Delayed_Arrival;hel7439299980;fao93766109;12:05
+//   +_Departure;fao93766109;lis2323639855;12:30';
+
+const flightInfo = flights.split('+');
+console.log(flightInfo);
+
+for(const flight of flightInfo) {
+ const [ type, from, to, time] = flight.split(';');
+ const output = `${type.startsWith('_Delayed')?'🔴': '' } ${type.replaceAll('_', ' ')} from ${from.toUpperCase().slice(0,3)} to ${to.toUpperCase().slice(0,3)} (${time.replace(':','h')})`.padStart(55);
+//  console.log(`${type.replaceAll('_', ' ')} from ${from.toUpperCase().slice(0,3)} to ${to.toUpperCase().slice(0,3)} (${time.replace(':','h')})`);
+console.log(output);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==========================================================================================================================
+
+
+// // // Working with String (Part 3)
+
+
+// console.log('a+very+nice+string'.split('+'));// the string got seperate with the seperator which we have provided
+
+// console.log('Jonas Schmedtamann'.split(' '));
+
+// // we can also use destructuring using split
+
+// const [ firstName, lastName] = 'Jonas Schmedtamann'.split(' ');
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+
+
+// // create a function where you will pass a string and that string will make every word first letter capital
+
+// const capitalismName = function(str) {
+//    const names = str.split(' ');
+//    const namesUpper = [];
+//    for( const n of names) {
+//       //  namesUpper.push(n[0].toUpperCase()+n.slice(1));//using uppercase and slice method
+      
+//       //now we will see using replace method
+//       namesUpper.push(n.replace(n[0],n[0].toUpperCase()))
+//    }
+//    console.log(namesUpper.join(' '));
+// };
+
+// capitalismName('Jonas Schmedtmann');
+
+// console.log(['Jonas','doe'].join(' '));
+
+
+
+// console.log('Jonas'.padStart(10,'*'));
+// console.log('Jonas'.padEnd('10','*'));
+// console.log('Jonas'.padStart(10,'*').padEnd(15,'*'));//using both method together
+
+// // make a function in which you give you credit card number and it should mask all the elements except the last 4 digits
+
+// const creditCardNum = function(num) {
+//    const str = num +'';
+//    const last = str.slice(-4);
+//    return last.padStart(str.length, '*')
+// }
+
+// console.log(creditCardNum(123456789123));
+
+// console.log('Due to bad Weather the flight is delayed'.repeat(5));
+
+
+// const planesInLine = function(n) {
+//   console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+// }
+
+// planesInLine(5)
+
+
+
+// ==========================================================================================================================
+
+
+
+
+
 
 // ==========================================================================================================================
 

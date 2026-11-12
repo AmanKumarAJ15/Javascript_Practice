@@ -1,5 +1,23 @@
 'use strict';
 
+
+// section 10.5
+
+const greet = function(greeting) {
+    return function(name) {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greeter = greet('Hello') // the greeter is the function which is having the value of the greet function 
+greeter('Jonas');
+greeter('Steven');
+greet('Hello')('Jonas');//all are same the first one is returning a function which is calling the second argument and returning something
+
+// task is to convert the greet function into an arrow function
+
+const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
+
 // Section 10.4 fucntion accepting callback function
 
 // create a function which should accept a string and a function in the following way

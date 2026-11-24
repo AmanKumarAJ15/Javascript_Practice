@@ -316,3 +316,21 @@
 //                                         Hi, Ravi!
 // Hello, Anita!
 // Hello, Guest!
+
+
+// const arr = [1,2,3,4,5];
+// // console.log(arr.push(6,7));
+// // console.log(arr.unshift(0,-1));
+
+// // console.log(arr.pop(5));
+
+// // console.log(arr.shift())
+
+// console.log(arr.indexOf(3))
+
+
+// console.log(arr);
+
+// const ar = ['a','b','c'];
+// ar.push('e','f');
+// console.log(ar)
